@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DoubtBox - Ask a Mentor</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="s.css" />
+</head>
+
+<body>
+    <div class="header1">
+        <nav class="navbar">
+            <div class="logo">
+                <div class="logo-icon"></div>
+            </div>
+    
+            <div class="nav-content">
+                <div class="hamburger">
+                    &#9776
+                </div>
+    
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#anonymous" class="nav-link">Anonymous Box</a></li>
+                    <li><a href="#experience" class="nav-link">Experience Wall</a></li>
+                    <li><a href="#community" class="nav-link">Community</a></li>
+                    <li><a href="#profiles" class="nav-link">Profiles</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+    
+                <div class="profile-dropdown">
+                    <button class="profile-btn">
+                        My Profile
+                        <span class="dropdown-arrow">▼</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-item">
+                            👤 Personal Details
+                        </div>
+                        <div class="dropdown-item">
+                            ⚙ Settings
+                        </div>
+                        <div class="dropdown-item">
+                            🎯 Preferences
+                        </div>
+                        <div class="dropdown-item">
+                            📊 Activity
+                        </div>
+                        <div class="dropdown-item"></div>
+                            🚪 Logout
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <span class="close-menu" onclick="closeMobileMenu()">&times;</span>
+        <ul class="nav-menu">
+            <li><a href="#home" class="nav-link">Home</a></li>
+            <li><a href="#anonymous" class="nav-link">Anonymous Box</a></li>
+            <li><a href="#experience" class="nav-link">Experience Wall</a></li>
+            <li><a href="#community" class="nav-link">Community</a></li>
+            <li><a href="#profiles" class="nav-link">Profiles</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+    </div>
+    
+    <!-- Overlay for mobile menu -->
+    <div class="overlay"></div>
+
+
+
+
+
+
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-question-circle"></i> DoubtBox</h1>
+            <p class="subtitle">Get instant help from mentors and peers</p>
+        </div>
+
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number" id="totalQuestions">0</div>
+                <div class="stat-label">Total Questions</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="totalAnswers">0</div>
+                <div class="stat-label">Total Answers</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="answeredQuestions">0</div>
+                <div class="stat-label">Answered</div>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <form id="doubtForm" class="form-grid">
+                <div class="input-group">
+                    <label for="category"><i class="fas fa-tags"></i> Category</label>
+                    <select id="category" required>
+                        <option value="">Select Category</option>
+                        <option>Academics</option>
+                        <option>Placement</option>
+                        <option>Projects</option>
+                        <option>Resume</option>
+                        <option>Career</option>
+                        <option>Technical</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="question"><i class="fas fa-edit"></i> Your Question</label>
+                    <textarea id="question" placeholder="Describe your doubt in detail..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn ripple-btn"><i class="fas fa-paper-plane"></i> Submit
+                    Question</button>
+            </form>
+        </div>
+
+        <div class="questions-container">
+            <div class="questions-header">
+                <h2><i class="fas fa-list-alt"></i> Questions & Answers</h2>
+                <div class="filter-section">
+                    <label for="filter"><i class="fas fa-filter"></i> Filter:</label>
+                    <select id="filter">
+                        <option value="All">All Categories</option>
+                        <option>Academics</option>
+                        <option>Placement</option>
+                        <option>Projects</option>
+                        <option>Resume</option>
+                        <option>Career</option>
+                        <option>Technical</option>
+                        <option>Other</option>
+                    </select>
+                    <input type="text" id="searchInput" placeholder="Search doubts..." />
+                    <button id="clearAllBtn" class="clear-btn ripple-btn"><i class="fas fa-trash"></i> Clear
+                        All</button>
+                </div>
+            </div>
+            <div id="questionsList"></div>
+        </div>
+    </div>
+
+    <script src="sc.js"></script>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>ConnectGen</h4>
+                <p>Bridging generations through shared experiences and wisdom. Join our community today!</p>
+                <form class="newsletter-form" onsubmit="return false;">
+                    <input type="email" class="newsletter-input" placeholder="Subscribe to newsletter"
+                        aria-label="Email for newsletter">
+                    <button type="submit" class="newsletter-btn">Subscribe</button>
+                </form>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#community">Community</a></li>
+                    <li><a href="#profiles">Profiles</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#privacy">Privacy Policy</a></li>
+                    <li><a href="#terms">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="https://twitter.com" class="social-link" aria-label="Twitter">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg>
+                    </a>
+                    <a href="https://facebook.com" class="social-link" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.297c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.015z" />
+                        </svg>
+                    </a>
+                    <a href="https://instagram.com" class="social-link" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.327.069 2.871.069 7.227.069 8.61.014 9.018.072 10.297c.058 5.353 2.582 7.98 7.937 7.98 1.28.058 1.688.013 4.97.013 3.279 0 3.687.045 4.967-.013 5.356-.058 7.98-2.605 7.98-7.958 0-1.28.045-1.688.013-4.967-.058-5.356-2.605-7.98-7.958-7.98-1.28-.058-1.688-.013-4.967-.013zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 11-2.881 0 1.44 1.44 0 012.881 0z" />
+                        </svg>
+                    </a>
+                    <a href="https://linkedin.com" class="social-link" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0H8.14v16h4.846v-8.231c0-4.637 6.022-5.007 6.022 0V24h4.845v-10.23c0-7.936-10.23-7.642-10.852-3.632V7.5z" />
+                        </svg>
+                    </a>
+                    <a href="https://youtube.com" class="social-link" aria-label="YouTube">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.872.505 9.377.505 9.377.505s7.505 0 9.377-.505a3.016 3.016 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12 9.545 15.568z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 SJ Connect. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
